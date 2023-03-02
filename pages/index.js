@@ -110,38 +110,38 @@ const Home = () => {
 		setIsGenerating(false);
 	};
 
-	const sleep = (ms) => {
-		return new Promise((resolve) => {
-			setTimeout(resolve, ms);
-		});
-	};
+	// const sleep = (ms) => {
+	// 	return new Promise((resolve) => {
+	// 		setTimeout(resolve, ms);
+	// 	});
+	// };
 
-	useEffect(() => {
-		const runRetry = async () => {
-			if (retryCount === 0) {
-				console.log(
-					`Model still loading after ${maxRetries} retries. Try request again in 5 minutes.`
-				);
-				setRetryCount(maxRetries);
-				return;
-			}
+	// useEffect(() => {
+	// 	const runRetry = async () => {
+	// 		if (retryCount === 0) {
+	// 			console.log(
+	// 				`Model still loading after ${maxRetries} retries. Try request again in 5 minutes.`
+	// 			);
+	// 			setRetryCount(maxRetries);
+	// 			return;
+	// 		}
 
-			console.log(`Trying again in ${retry} seconds.`);
-			setStatus(
-				`Please wait, the model is loading. Trying again in ${retry} seconds.`
-			);
+	// 		console.log(`Trying again in ${retry} seconds.`);
+	// 		setStatus(
+	// 			`Please wait, the model is loading. Trying again in ${retry} seconds.`
+	// 		);
 
-			await sleep(retry * 1000);
+	// 		await sleep(retry * 1000);
 
-			await generateAction();
-		};
+	// 		await generateAction();
+	// 	};
 
-		if (retry === 0) {
-			return;
-		}
+	// 	if (retry === 0) {
+	// 		return;
+	// 	}
 
-		runRetry();
-	}, [retry]);
+	// 	runRetry();
+	// }, [retry]);
 
 	const starWars = () => {
 		setInput(
@@ -175,11 +175,11 @@ const Home = () => {
 			<div className="container">
 				<div className="header">
 					<div className="header-title">
-						<h1>AI Portrait generator trained on Nikita's face</h1>
+						<h1>AI Portrait generator trained on Nikita&apos;s face</h1>
 					</div>
 					<div className="header-subtitle">
 						<h2>
-							Turn me into anyone you want! Make sure you refer to me as
+							Make sure you refer to the trained concept as
 							<strong className="name-token"> nik</strong> in the prompt
 						</h2>
 					</div>
@@ -226,6 +226,7 @@ const Home = () => {
 								className={
 									isGenerating ? "generate-button loading" : "generate-button"
 								}
+								// onClick={generateAction}
 								onClick={handleSubmit}
 							>
 								<div className="generate">
