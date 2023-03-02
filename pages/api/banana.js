@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 		prompt: prompt,
 		negative_prompt: "ugly, blurry, deformed, disfigured",
 		num_inference_steps: 30,
-		guidance_scale: 7,
+		guidance_scale: 7.5,
 	};
 
 	//API, model, params
