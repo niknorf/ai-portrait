@@ -14,6 +14,32 @@ const jedi = localFont({
 });
 
 const Home = () => {
+	// Banana inference
+	const [prediction, setPrediction] = useState(null);
+
+	const handleSubmit = async (e) => {
+		setIsGenerating(true);
+		setStatus("Generating...");
+
+		e.preventDefault();
+		var prompt = input;
+		const response = await fetch("/api/banana", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				prompt: prompt,
+			}),
+		});
+		let prediction = await response.json();
+		setPrediction(prediction);
+		setFinalPrompt(input);
+		setIsGenerating(false);
+		setInput("");
+		setStatus("Ready!");
+	};
+
 	// Limit generate retries to 20
 	const maxRetries = 20;
 	const [input, setInput] = useState("");
@@ -200,7 +226,7 @@ const Home = () => {
 								className={
 									isGenerating ? "generate-button loading" : "generate-button"
 								}
-								onClick={generateAction}
+								onClick={handleSubmit}
 							>
 								<div className="generate">
 									{isGenerating ? (
@@ -212,18 +238,16 @@ const Home = () => {
 							</a>
 						</div>
 						<div className="warning">
-							⚠️ This model runs on a free{" "}
-							<a href="https://huggingface.co" className="huggingtext">
-								Hugging Face
-							</a>{" "}
-							instance.
-							<p>Initial loading might take up to 5 minutes.</p>
+							<p>
+								⚠️ Due to the cold start of cloud GPU, initial generation might
+								take up to 1,5 minutes.
+							</p>
 						</div>
 					</div>
 				</div>
-				{img && (
+				{prediction && (
 					<div className="output-content">
-						<Image src={img} width={512} height={512} alt={input} />
+						<Image src={prediction} width={512} height={512} alt={input} />
 						<p>{finalPrompt}</p>
 					</div>
 				)}
