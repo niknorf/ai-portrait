@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 	let model_inputs = {
 		prompt: prompt,
 		negative_prompt: "ugly, blurry, deformed, disfigured",
-		num_inference_steps: 30,
+		num_inference_steps: 40,
 		guidance_scale: 7.5,
 	};
 
