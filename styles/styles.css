@@ -418,3 +418,42 @@ body {
 		transform: rotate(360deg);
 	}
 }
+
+.github-container {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	--transform-translate-x: 0.5rem;
+}
+
+.github-btn {
+	display: inline-flex;
+	padding-top: 0.625rem;
+	padding-bottom: 0.625rem;
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+	margin-right: 1.5rem;
+	margin-bottom: 1.5rem;
+	color: #ffffff;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	font-weight: 500;
+	text-align: center;
+	align-items: center;
+	border-radius: 0.5rem;
+	background: #24292f;
+	cursor: pointer;
+	border-color: #31ff2669;
+}
+
+.github-btn:hover {
+	background: #24292f;
+	opacity: 0.9;
+}
+
+.github-svg {
+	margin-right: 0.5rem;
+	margin-left: -0.25rem;
+	width: 1rem;
+	height: 1rem;
+}
